@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
     sudo service nginx start
     echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
     echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
-    sudo cp /provision/hello-world.html /var/www/html/index.nginx-debian.html
+    sudo cp /provision/hello-world1.html /var/www/html/index.nginx-debian.html
   SHELL
   end
 
@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
     sudo service nginx start
     echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
     echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
-    sudo cp /provision/hello-world.html /var/www/html/index.nginx-debian.html
+    sudo cp /provision/hello-world2.html /var/www/html/index.nginx-debian.html
   SHELL
   end
 
