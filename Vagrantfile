@@ -12,8 +12,11 @@ Vagrant.configure("2") do |config|
       vb.name = "webserver1"
   end
 ##### CONFIGURE SHARED FOLDER #####
-  web1.vm.synced_folder "./Webservers/", "/provision" 
+  # web1.vm.synced_folder "./Webservers/", "/provision" 
 ##### CONFIGURE SUDO OVERRIDES #####
+  web1.vm.provision "ansible" do |ansible|
+    ansible.playbook = "./ansible/hello-world.yml"
+  end
   web1.vm.provision "shell", inline: <<-SHELL
     sudo echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
     sudo echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
@@ -29,7 +32,7 @@ Vagrant.configure("2") do |config|
      vb.name = "webserver2"
   end
 ##### CONFIGURE SHARED FOLDER #####
-  web2.vm.synced_folder "./Webservers/", "/provision" 
+  # web2.vm.synced_folder "./Webservers/", "/provision" 
 ##### CONFIGURE SUDO OVERRIDES #####  
   web2.vm.provision "shell", inline: <<-SHELL
     sudo echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
@@ -46,7 +49,7 @@ Vagrant.configure("2") do |config|
      vb.name = "loadbalancer"
     end
   ##### CONFIGURE SHARED FOLDER #####
-  lb1.vm.synced_folder "./LoadBalancer/", "/provision"  
+  # lb1.vm.synced_folder "./LoadBalancer/", "/provision"  
 ##### CONFIGURE SUDOERS OVERRIDES #####
   lb1.vm.provision "shell", inline: <<-SHELL
     sudo echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
