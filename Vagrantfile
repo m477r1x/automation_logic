@@ -65,6 +65,22 @@ Vagrant.configure("2") do |config|
     echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
   SHELL
   end
+  
+  config.vm.define "testclient1" do |test|
+    test.vm.box = "ubuntu/bionic64"
+    test.vm.network "private_network", ip: "192.168.33.40"
+    test.vm.provider "virtualbox" do |vb|
+      vb.memory = 1024
+      vb.cpus = 1
+      vb.name = "testclient1"
+    end
+  test.vm.synced_folder "./testclient/", "/provision"
+  test.vm.provision "shell", inline: <<-SHELL
+    cp /provision/lb_healthcheck /home/vagrant/
+    chmod +x /home/vagrant/lb_healthcheck
+    ./home/vagrant/lb_healthcheck
+  SHELL
+  end
 end
 
 
