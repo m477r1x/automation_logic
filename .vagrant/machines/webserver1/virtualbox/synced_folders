@@ -1,1 +1,0 @@
-{"virtualbox":{"/provision":{"guestpath":"/provision","hostpath":"C:/Users/Matt/Desktop/github/automation_logic/Webservers","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/Matt/Desktop/github/automation_logic","disabled":false,"__vagrantfile":true}}}

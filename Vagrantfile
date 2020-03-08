@@ -13,14 +13,10 @@ Vagrant.configure("2") do |config|
   end
 ##### CONFIGURE SHARED FOLDER #####
   web1.vm.synced_folder "./Webservers/", "/provision" 
-##### INSTALL NGINX,COPY THE HELLO WORLD SITE AND CONFIGURE SUDO OVERRIDES #####
+##### CONFIGURE SUDO OVERRIDES #####
   web1.vm.provision "shell", inline: <<-SHELL
-    sudo apt update
-    sudo apt install -y nginx
-    sudo service nginx start
-    echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
-    echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
-    sudo cp /provision/hello-world.html /var/www/html/index.nginx-debian.html
+    sudo echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    sudo echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
   SHELL
   end
 
@@ -34,14 +30,10 @@ Vagrant.configure("2") do |config|
   end
 ##### CONFIGURE SHARED FOLDER #####
   web2.vm.synced_folder "./Webservers/", "/provision" 
-##### INSTALL NGINX,COPY THE HELLO WORLD SITE AND CONFIGURE SUDO OVERRIDES #####  
+##### CONFIGURE SUDO OVERRIDES #####  
   web2.vm.provision "shell", inline: <<-SHELL
-    sudo apt update
-    sudo apt install -y nginx
-    sudo service nginx start
-    echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
-    echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
-    sudo cp /provision/hello-world.html /var/www/html/index.nginx-debian.html
+    sudo echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    sudo echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
   SHELL
   end
 
@@ -55,14 +47,10 @@ Vagrant.configure("2") do |config|
     end
   ##### CONFIGURE SHARED FOLDER #####
   lb1.vm.synced_folder "./LoadBalancer/", "/provision"  
-##### INSTALL NGINX, COPY LOAD BALANCER CONFIG AND RELOAD, ADD SUDOERS OVERRIDES #####
+##### CONFIGURE SUDOERS OVERRIDES #####
   lb1.vm.provision "shell", inline: <<-SHELL
-    sudo apt update
-    sudo apt install -y nginx
-    sudo cp /provision/loadbalancerconfig /etc/nginx/sites-available/default
-    sudo service nginx restart
-    echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
-    echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    sudo echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    sudo echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
   SHELL
   end
 end
