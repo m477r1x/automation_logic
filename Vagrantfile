@@ -11,14 +11,16 @@ Vagrant.configure("2") do |config|
       vb.cpus = 1
       vb.name = "webserver1"
   end
-##### CONFIGURE SHARED FOLDER AND INSTALL NGINX #####
+##### CONFIGURE SHARED FOLDER #####
   web1.vm.synced_folder "./Webservers/", "/provision" 
+##### INSTALL NGINX,COPY THE HELLO WORLD SITE AND CONFIGURE SUDO OVERRIDES #####
   web1.vm.provision "shell", inline: <<-SHELL
     sudo apt update
     sudo apt install -y nginx
     sudo service nginx start
-# REPLACE SUDOERS FILE WITH UPDATED CONFIG TO REMOVE PASSWORD PROMPT
     echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    sudo cp /provision/hello-world.html /var/www/html/index.nginx-debian.html
   SHELL
   end
 
@@ -30,14 +32,16 @@ Vagrant.configure("2") do |config|
      vb.cpus = 1
      vb.name = "webserver2"
   end
-##### CONFIGURE SHARED FOLDER AND INSTALL NGINX #####
+##### CONFIGURE SHARED FOLDER #####
   web2.vm.synced_folder "./Webservers/", "/provision" 
+##### INSTALL NGINX,COPY THE HELLO WORLD SITE AND CONFIGURE SUDO OVERRIDES #####  
   web2.vm.provision "shell", inline: <<-SHELL
     sudo apt update
     sudo apt install -y nginx
     sudo service nginx start
-##### REPLACE SUDOERS FILE WITH UPDATED CONFIG TO REMOVE PASSWORD PROMPT #####
     echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    sudo cp /provision/hello-world.html /var/www/html/index.nginx-debian.html
   SHELL
   end
 
@@ -49,14 +53,14 @@ Vagrant.configure("2") do |config|
      vb.cpus = 1
      vb.name = "loadbalancer"
     end
+  ##### CONFIGURE SHARED FOLDER #####
   lb1.vm.synced_folder "./LoadBalancer/", "/provision"  
+##### INSTALL NGINX, COPY LOAD BALANCER CONFIG AND RELOAD, ADD SUDOERS OVERRIDES #####
   lb1.vm.provision "shell", inline: <<-SHELL
     sudo apt update
     sudo apt install -y nginx
-    sudo "cp /provision/loadbalancerconfig /etc/nginx/sites-available/default"
-##### RELOAD NGINX WITH NEW CONFIG FOR LOAD BALANCING #####
+    sudo cp /provision/loadbalancerconfig /etc/nginx/sites-available/default
     sudo service nginx restart
-##### REPLACE SUDOERS FILE WITH UPDATED CONFIG TO REMOVE PASSWORD PROMPT #####
     echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
     echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
   SHELL
