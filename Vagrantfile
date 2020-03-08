@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     sudo apt install -y nginx
     sudo service nginx start
 # REPLACE SUDOERS FILE WITH UPDATED CONFIG TO REMOVE PASSWORD PROMPT
-    sudo "cp /provision/sudoers /etc/
+    sudo "cp /provision/sudoers /etc/"
   SHELL
   end
 
