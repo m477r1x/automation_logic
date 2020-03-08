@@ -19,8 +19,8 @@
 # Default server configuration
 #
 upstream backend {
-	server 192.168.33.10
-	server 192.168.33.20
+	server 192.168.33.10;
+	server 192.168.33.20;
 }
 
 server {

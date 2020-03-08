@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     sudo apt install -y nginx
     sudo service nginx start
 # REPLACE SUDOERS FILE WITH UPDATED CONFIG TO REMOVE PASSWORD PROMPT
-    sudo "cp /provision/sudoers /etc/"
+    echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
   SHELL
   end
 
@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     sudo apt install -y nginx
     sudo service nginx start
 ##### REPLACE SUDOERS FILE WITH UPDATED CONFIG TO REMOVE PASSWORD PROMPT #####
-    sudo "cp /provision/sudoers /etc/"
+    echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
   SHELL
   end
 
@@ -57,7 +57,8 @@ Vagrant.configure("2") do |config|
 ##### RELOAD NGINX WITH NEW CONFIG FOR LOAD BALANCING #####
     sudo service nginx restart
 ##### REPLACE SUDOERS FILE WITH UPDATED CONFIG TO REMOVE PASSWORD PROMPT #####
-    sudo "cp /provision/sudoers /etc/"
+    echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
   SHELL
   end
 end

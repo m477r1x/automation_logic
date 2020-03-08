@@ -1,0 +1,6 @@
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+vagrant ALL=(ALL:ALL) NOPASSWD:ALL
+
+# Members of the admin group may gain root privileges and do not prompt for password
+%admin ALL=(ALL) NOPASSWD:ALL
