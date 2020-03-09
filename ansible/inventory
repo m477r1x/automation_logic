@@ -5,3 +5,8 @@
 [web:vars]
 ansible_python_interpreter=/usr/bin/python3
 
+[loadbalancer]
+192.168.33.30
+
+[loadbalancer:vars]
+ansible_python_interpreter=/usr/bin/python3
