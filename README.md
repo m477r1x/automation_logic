@@ -6,7 +6,7 @@
 
 This repo contains 2 branches vagrant-provision and ansibpe-provision. 
 
-The vagrant branch provisions 2 nginx webservers and 1 nginx load balancer, all running on the same base image as instructed. The vagrant branch provisions the nginx configuration and the sudo configuration using just vagrant methods.
+The vagrant branch provisions 2 nginx webservers and 1 nginx load balancer, all running on the same base image as instructed. The vagrant branch provisions the nginx configuration and the sudo configuration using just vagrant methods. The ansible branch should hopefully configure the machines using an ansible playbook but I have been unable to verify this due to environment restrictions at home. 
 
 ### Process for the vagrant-provision branch
 
