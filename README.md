@@ -49,7 +49,9 @@ https://codelike.pro/how-to-configure-nginx-using-ansible-on-ubuntu/
 
 **20 mins** - learn how to launch a basic nginx machine using vagrant
 **35 mins** - learn how to launch multiple machines using a single vagrantfile, troubleshoot/research when it doesn't work and eventually put it down to Windows being pants and hope this is acceptable. Then start again the following morning and for some reason it works..... thanks Windows.
+
 **15 mins** - learn how to manually configure an nginx load balancer and make neccassary additions to vagrantfile including folder redirection for nginx config
+
 **1 min** - realise this causes problems because folder redirection makes package installer think there is a previous installation of nginx because of existing config files in /etc/nginx and prompts for user intervention.
 
 **20 mins** - configure hello world page, and copy operations for the web servers to serve the page.
