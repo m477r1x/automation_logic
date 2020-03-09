@@ -76,6 +76,8 @@ Vagrant.configure("2") do |config|
     end
   test.vm.synced_folder "./testclient/", "/provision"
   test.vm.provision "shell", inline: <<-SHELL
+    echo vagrant ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
+    echo %admin ALL=NOPASSWD:ALL > /etc/sudoers.d/overrides
     cp /provision/lb_healthcheck /home/vagrant/
     chmod +x /home/vagrant/lb_healthcheck
     /home/vagrant/lb_healthcheck
