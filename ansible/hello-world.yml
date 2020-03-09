@@ -37,3 +37,12 @@
      copy:
       src: ./LoadBalancer/sudoers
       dest: /etc/sudoers.d/overrides
+- hosts: testclient1
+  become: yes
+  tasks:
+    - name: copy the loadbalancer healthcheck script and run
+      copy:
+        src: ./testclient/lb_healthcheck
+        dest: /home/vagrant/
+    - name: run load balancer healthcheck
+      script: /home/vagrant/lb_healtcheck
