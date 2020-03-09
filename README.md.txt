@@ -4,9 +4,11 @@
 
 ### Summary:
 
-This repo contains 2 branches vagrant-provision and ansibpe-provision. 
+This repo contains 2 branches vagrant-provision and ansible-provision. 
 
 The vagrant branch provisions 2 nginx webservers and 1 nginx load balancer, all running on the same base image as instructed. The vagrant branch provisions the nginx configuration and the sudo configuration using just vagrant methods.
+
+Since I had no prior knowledge of using vagrant or ansible, some of the time required me to research configuration and syntax for the tools.
 
 ### Process for the ansible-provision branch
 
@@ -53,20 +55,30 @@ https://codelike.pro/how-to-configure-nginx-using-ansible-on-ubuntu/
 
 **20 mins** - learn how to launch a basic nginx machine using vagrant
 **35 mins** - learn how to launch multiple machines using a single vagrantfile, troubleshoot/research when it doesn't work and eventually put it down to Windows being pants and hope this is acceptable. Then start again the following morning and for some reason it works..... thanks Windows.
-**15 mins** - learn how to manually configure an nginx load balancer and make neccassary additions to vagrantfile including folder redirection for nginx config
+**20 mins** - learn how to manually configure an nginx load balancer and make neccassary additions to vagrantfile including folder redirection for nginx config
 **1 min** - realise this causes problems because folder redirection makes package installer think there is a previous installation of nginx because of existing config files in /etc/nginx and prompts for user intervention.
 
 **20 mins** - configure hello world page, and copy operations for the web servers to serve the page.
 
 **30 mins** - reading about ansible and creating a playbook to apply to the webservers and the loadbalancer and discovering that ansible is not supported on Windows hosts officially, and requires some weird tinkering of user accounts and stuff to get it working and didn't fancy fudging my custom gaming desktop.
-**25 mins** - go back to basics and provision the loadbalancer config by copying a source file to destination from host to guest using vagrant natively.
+**90 mins** - go back to basics and provision the loadbalancer config by copying a source file to destination from host to guest using vagrant natively, create a vagrant-provision git branch and work on this for the rest of the config until I can use a linux based system for ansible. Troubleshoot issues with deployment and code syntax until working correctly.
 
-**20 mins** - read up on best practices on modifying sudoers file and implement updated config for admin group and vagrant user
+**20 mins** - read up on best practices on modifying sudoers file and implement updated config for admin group and vagrant user using sudoers.d directory rather than editing the main sudoers file.
 
-**45 mins** - ~~dicking~~ tinkering about manually spinning up ubuntu VM to get around windows problems and attempt ansible configuration but unfortunately as I anticipated, vagrant isn't very good at bringing up VMs on a VM.
+**90 mins** - ~~dicking~~ tinkering about manually spinning up ubuntu VM to get around windows problems and attempt ansible configuration but unfortunately as I anticipated, vagrant isn't very good at bringing up VMs on a VM.
 
-**1 hour** - researching ways to automate testing nginx loadbalancing but unable to find anything which did not involve learning PHP, so instead opted for a simple check by having different configurations on each webserver so when you request the page, you can see which server the response is coming from by means of the page title.
+**60 mins** - researching ways to automate testing nginx loadbalancing but unable to find anything which did not involve learning PHP, so instead opted for a simple check by having different configurations on each webserver so when you request the page, you can see which server the response is coming from by means of the page title.
 
-**45 mins** - Decided to include a test client machine in the setup to easily test load balancing output to avoid local host networking configuration problems which could arise depending on where this environment is being spun up on. Also configured automated script to output to healthcheck file to show requests being directed between the web servers by the load balancer
+**45 mins** - write documentation
 
-**30 mins** - write documentation
+### Feedback
+
+On the whole I enjoyed working on this test, I managed to find time in between house renovations to work on it and it actually provided me with some time to focus on something else I enjoy as a break from building work. Although it seems like it won't take long on the face of it, once you get into it you realise that actually there are a lot of caveats and gotchas around this, especially if you are using a Windows machine. I probably could have worked out a way to get ansible working on my machine at home but I didn't really have enough time left to do that on top of finishing the test to the best of my current ability. 
+
+This is probably one of the better technical tests which I have done during my interview process for various companies, as most other ones I have done are simply something along the lines of write some terraform to create a loadbalancer, EC2 instance, ASG, etc. And this can pretty much be done almost by copying/pasting from Hashicorp docs. Granted you need to demonstrate correct management of state files but apart from that, these tests are quite simple. This test on the other hand was challenging for me, particularly because it forced me to use tools which I had not used before, and I think that would probably be the case for many mid-level or junior DevOps engineers who have been trained mainly in docker and containers rather than VMs. 
+
+The only thing I would say is that the test does depend on people either having access to a Mac or a Linux machine, which while this can be achieved through VMs if you have the hardware for it, it's difficult to then provision more VMs running on a VM if you see what I mean. 
+
+### Thanks!
+
+Thank you for allowing me to attempt this test and considering me as a candidate. You have been very accommodating to me and really have tried to enable me to complete the test as best I can by letting me use a company laptop for a short time so I very much appreciate this. Whether this submission is deemed a pass or a fail, I'm glad to have had the opportunity to give it a go, and also I now have some basic knowledge of Vagrant and ansible which I could put on my CV for next time!
