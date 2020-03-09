@@ -64,3 +64,7 @@ https://codelike.pro/how-to-configure-nginx-using-ansible-on-ubuntu/
 **60 mins** - researching ways to automate testing nginx loadbalancing but unable to find anything which did not involve learning PHP, so instead opted for a simple check by having different configurations on each webserver so when you request the page, you can see which server the response is coming from by means of the page title.
 
 **45 mins** - write documentation
+
+### Thanks!
+
+Thank you for allowing me to attempt this test and considering me as a candidate. You have been very accommodating to me and really have tried to enable me to complete the test as best I can by letting me use a company laptop for a short time so I very much appreciate this. Whether this submission is deemed a pass or a fail, I'm glad to have had the opportunity to give it a go, and also I now have some basic knowledge of Vagrant and ansible which I could put on my CV for next time!
