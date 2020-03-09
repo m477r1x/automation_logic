@@ -78,6 +78,8 @@ https://codelike.pro/how-to-configure-nginx-using-ansible-on-ubuntu/
 
 This technical test was one of the better ones I have undertaken during the course of interviews. It challenged me to use tools that I had no previous experience in. Most other tests I have done have usually consisted of creating a docker container image and deploying it into a K8s cluster, or writing some simple Terraform code to spin up a load balancer, ASG, EC2 instance etc. Apart from demonstrating a working knowledge of state file management, these tests can largely be completed by copy/pasting from Hashicorp documentation. So in light of this, even if this attempt is not deemed as passable, at least I have gained some rudimentary working knowledge of Vagrant and Ansible, so that's a plus!
 
+The only down side of the test I would say is the fact that it requires usage of a tool not supported on Windows and I don't have a Mac or lunix native machine at home. Which means that other people might have a similar issue to me. Whenever I need a Linux environment I usually spin up a VM but VMs don't usually like trying to create VM-inception environments. 
+
 ### Thanks!
 
 Thank you for allowing me to attempt this test and considering me as a candidate. You have been very accommodating to me and really have tried to enable me to complete the test as best I can by letting me use a company laptop for a short time so I very much appreciate this. Whether this submission is deemed a pass or a fail, I'm glad to have had the opportunity to give it a go, and also I now have some basic knowledge of Vagrant and ansible which I could put on my CV for next time!

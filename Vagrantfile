@@ -78,7 +78,7 @@ Vagrant.configure("2") do |config|
   test.vm.provision "shell", inline: <<-SHELL
     cp /provision/lb_healthcheck /home/vagrant/
     chmod +x /home/vagrant/lb_healthcheck
-    ./home/vagrant/lb_healthcheck
+    /home/vagrant/lb_healthcheck
   SHELL
   end
 end
