@@ -17,11 +17,16 @@ The vagrant branch provisions 2 nginx webservers and 1 nginx load balancer, all 
 
 ### Testing
 
-In order to confirm that load balancing is happening correctly, you can 
+In order to confirm that load balancing is happening correctly, you can either:
 
+1. Whilst logged into the SSH session on testclient1, run the command `tail healthcheck.log` and you should be able to see the load balancer directing traffic between the two web servers
+2. Alternatively you can run the command `vagrant ssh loadbalancer` and you can then `tail /etc/nginx/access.log` to watch the requests being directed.
 
+### Problems encountered:
 
+I encountered quite a few problems which needed working around on the basis that I was using a Windows machine. I was not able to finish the ansible portion of the test at home and so I have done as much as I could using an automation_logic laptop on site at the office. Another issue to note is the `lb_healthcheck` script which I wrote, works fine if you create the script on the vm itself, but when it is saved in the repo on my local Windows machine, something happens to it to do with formatting. Then when vagrant copies the file onto the testclient1 machine, and tries to run it - it receives `-bash: ./lb_healthcheck: /bin/bash^M: bad interpreter: No such file or directory`
 
+You can work around this by simply deleting the script and re-writing it on the vm itself using vi etc, but this doesn't help the fact that it is meant to be an automated test. Hopefully when I get the chance to use a linux based machine at the office I can correct this and at least this problem will be sorted.
 
 
 
