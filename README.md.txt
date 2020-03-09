@@ -49,18 +49,18 @@ https://codelike.pro/how-to-configure-nginx-using-ansible-on-ubuntu/
 
 **20 mins** - learn how to launch a basic nginx machine using vagrant
 **35 mins** - learn how to launch multiple machines using a single vagrantfile, troubleshoot/research when it doesn't work and eventually put it down to Windows being pants and hope this is acceptable. Then start again the following morning and for some reason it works..... thanks Windows.
-**15 mins** - learn how to manually configure an nginx load balancer and make neccassary additions to vagrantfile including folder redirection for nginx config
+**20 mins** - learn how to manually configure an nginx load balancer and make neccassary additions to vagrantfile including folder redirection for nginx config
 **1 min** - realise this causes problems because folder redirection makes package installer think there is a previous installation of nginx because of existing config files in /etc/nginx and prompts for user intervention.
 
 **20 mins** - configure hello world page, and copy operations for the web servers to serve the page.
 
 **30 mins** - reading about ansible and creating a playbook to apply to the webservers and the loadbalancer and discovering that ansible is not supported on Windows hosts officially, and requires some weird tinkering of user accounts and stuff to get it working and didn't fancy fudging my custom gaming desktop.
-**25 mins** - go back to basics and provision the loadbalancer config by copying a source file to destination from host to guest using vagrant natively.
+**90 mins** - go back to basics and provision the loadbalancer config by copying a source file to destination from host to guest using vagrant natively, create a vagrant-provision git branch and work on this for the rest of the config until I can use a linux based system for ansible. Troubleshoot issues with deployment and code syntax until working correctly.
 
-**20 mins** - read up on best practices on modifying sudoers file and implement updated config for admin group and vagrant user
+**20 mins** - read up on best practices on modifying sudoers file and implement updated config for admin group and vagrant user using sudoers.d directory rather than editing the main sudoers file.
 
-**45 mins** - ~~dicking~~ tinkering about manually spinning up ubuntu VM to get around windows problems and attempt ansible configuration but unfortunately as I anticipated, vagrant isn't very good at bringing up VMs on a VM.
+**90 mins** - ~~dicking~~ tinkering about manually spinning up ubuntu VM to get around windows problems and attempt ansible configuration but unfortunately as I anticipated, vagrant isn't very good at bringing up VMs on a VM.
 
-**1 hour** - researching ways to automate testing nginx loadbalancing but unable to find anything which did not involve learning PHP, so instead opted for a simple check by having different configurations on each webserver so when you request the page, you can see which server the response is coming from by means of the page title.
+**60 mins** - researching ways to automate testing nginx loadbalancing but unable to find anything which did not involve learning PHP, so instead opted for a simple check by having different configurations on each webserver so when you request the page, you can see which server the response is coming from by means of the page title.
 
-**1 hour** - write documentation
+**45 mins** - write documentation
